@@ -95,22 +95,19 @@ __Select data set in range__
 
 ## Train model
 
-Experiment with three algorithms
+    Experiment with three algorithms
+    Also changed data set to avoid over/under fit
+    Use the parameter, `Positive = True` to prevent negative price prediction
+    - Linear Regression
+    - Ridge
+    - Lasso
+    Used verious technique to find the best model and hyper parameter of it
 
-Use the parameter, `Positive = True` to prevent negative price prediction
-
-- Linear Regression
-- Ridge
-- Lasso
-
-### Baseline model
-
-Used Linear Regression as the baseline
-![](./practical_application_II_starter/images/baseline_model_pipeline.png)
+Result of model trainings
 
 |Model|Data set|Hyper Params|MSE|MAE|
 |-|-|-|-|-|
-|Linear Regression|500 < car price < 120000|Defaults|121928253.36|8198.16|
+|Linear Regression|Defaults|500 < car price < 120000|121928253.36|8198.16|
 |Ridge|Defaults|500 < car price < 120000|114423615.06|7606.56|
 |Lasso|Defaults|500 < car price < 120000|98000493.63|7008.86|
 |Ridge|Grid Search CV|500 < car price < 120000|108301123.53|7435.62|
@@ -121,15 +118,45 @@ Used Linear Regression as the baseline
 |Lasso|Deafults|500 < car price < 120000 Ford only |135039985.93|8415.82|
 |Lasso|Deafults|500 < car price < 100000 |84699147.65|7050.70|
 
-### Hyperparameter tunning
+### Hyperparameter tunning result
 
 |Tune|Model|Data set|Hyper Params|MSE|MAE|
 |-|-|-|-|-|-|
 |Before|Lasso|Deafults|500 < car price < 100000 |84699147.65|7050.70|
-|After|Lasso|Grid Search CV|500 < car price < 100000 |51987298.13|4857.292936419671|
+|After|Lasso|alpha=0.1, fit_intercept=False|500 < car price < 100000 |51987298.13|4857.292936419671|
+
+Model
+
+![](./practical_application_II_starter/images/gcv_Lasso_model_ls100k.png)
+
+Prediction result
+
+__Summary__
+
+    We have a model that can predict a car between 500 to 100000
+    Note that it may not be able to provide estimate price for a luxary car such as Ferrari
 
 ![](./practical_application_II_starter/images/fig_regplot_Lasso_gridcv_result.png)
 
-Took `Lasso` can ran fine tune using `GridSearchCV`
+### Feature importance
 
-As a result
+    regions are very important factors for pricing
+
+Following shows how much regions are impoart (the higher number the more important)
+
+```
+region_detroit metro 0.002 +/- 0.000
+region_delaware 0.002 +/- 0.000
+region_houston 0.004 +/- 0.000
+region_huntsville / decatur 0.004 +/- 0.000
+region_anchorage / mat-su 0.026 +/- 0.001
+region_albuquerque 0.035 +/- 0.001
+region_eugene 0.045 +/- 0.001
+region_humboldt county 0.061 +/- 0.001
+region_kalispell 0.061 +/- 0.002
+region_asheville 0.063 +/- 0.001
+region_SF bay area 0.068 +/- 0.001
+region_akron / canton 0.096 +/- 0.001
+region_austin 0.106 +/- 0.001
+region_charlotte 0.434 +/- 0.001
+```
