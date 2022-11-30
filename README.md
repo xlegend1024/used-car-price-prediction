@@ -1,12 +1,18 @@
 # Predcit a used car price
 
-[detail notebook here](./practical_application_II_starter/prompt_II.ipynb)
+## Notebook
 
+Please check [detail test results](./practical_application_II_starter/prompt_II.ipynb)
 
 ## Goal
 
 Understand what factors make a car more or less expesive
+
+- State (region), manufacturer and odometer affect price of the used car
+
 Provide clear recommendations to car dealship - as to what consumers value in a used car
+
+- New business model buy used cars lower price in Delware and sell the cars in Vermont to maximize sales revenue
 
 ## Business Ideas
 
@@ -18,7 +24,7 @@ We have a machine leaerning model which can argument sales represnetitive pricin
 
 #### 2.1. State
 
-Buy cars from Delaware and sell in Vermont wil give us maximize sales revenue.
+Buy cars from Delaware and sell in Vermont will give us maximize sales revenue.
 > For example, Ford White SUV good condition and clean titled car can be sold 35,597 in Vermont whereas the same car can be aquired 4,875 in MD.
 > 
 > The gap between the two state is 30,722.
@@ -27,7 +33,7 @@ Buy cars from Delaware and sell in Vermont wil give us maximize sales revenue.
 
 Factors that are affecting price of used car are that
 
-- `manufacturer` - Ferrari, Tesla or Aston-martin such brand contribute price because retail price is expensive
+- `manufacturer` - Ferrari, Tesla or Aston-martin, the car brand contribute used car price because retail price (MSRP) is expensive
 - `odometer` - Very strong negative correlrated to the price of used car
 
 
